@@ -1,13 +1,13 @@
 package usuarios;
 
-public class Usuario {
+public class Titular {
     private String nome;
     private int idade;
     private String sexo;
     private String cpf;
     private String rg;
 
-    public Usuario(String nome, int idade, String sexo, String cpf, String rg) {
+    public Titular(String nome, int idade, String sexo, String cpf, String rg) {
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
