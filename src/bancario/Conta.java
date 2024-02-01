@@ -8,21 +8,11 @@ public class Conta {
     private int numeroAgencia;
     private float saldoConta;
 
-    static int numConta = 0;
-
-    public Conta(Titular titular) {
+    public Conta(Titular titular, int numeroConta) {
         this.titular = titular;
         this.saldoConta = 0;
-        this.numeroConta = numConta+=1;
-    }
-
-    public void consultarDados() {
-        System.out.println("================================");
-        System.out.println("Titular: " + getTitular().getNome());
-        System.out.println("N° conta: " + getNumeroConta());
-        System.out.println("N° agência: " + getNumeroAgencia());
-        System.out.println("Saldo da conta: " + getSaldoConta());
-        System.out.println("================================");
+        this.numeroConta = numeroConta;
+        this.numeroAgencia = 1;
     }
 
     public void sacarDinheiro(float valor) {
@@ -35,6 +25,15 @@ public class Conta {
 
     public void depositarDinheiro(float valor) {
         this.saldoConta += valor;
+    }
+
+    public void transferenciaDinheiro(Conta conta, float valor) {
+        if (valor <= this.saldoConta) {
+            this.saldoConta -= valor;
+            conta.saldoConta += valor;
+        } else {
+            throw new RuntimeException("SALDO INSUFICIENTE!");
+        }
     }
 
     public Titular getTitular() {
